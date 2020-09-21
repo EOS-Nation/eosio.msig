@@ -26,6 +26,42 @@
             ]
         },
         {
+            "name": "approval",
+            "base": "",
+            "fields": [
+                {
+                    "name": "level",
+                    "type": "permission_level"
+                },
+                {
+                    "name": "time",
+                    "type": "time_point"
+                }
+            ]
+        },
+        {
+            "name": "approvals_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "version",
+                    "type": "uint8"
+                },
+                {
+                    "name": "proposal_name",
+                    "type": "name"
+                },
+                {
+                    "name": "requested_approvals",
+                    "type": "approval[]"
+                },
+                {
+                    "name": "provided_approvals",
+                    "type": "approval[]"
+                }
+            ]
+        },
+        {
             "name": "approve",
             "base": "",
             "fields": [
@@ -108,6 +144,38 @@
             ]
         },
         {
+            "name": "invalidation",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "last_invalidation_time",
+                    "type": "time_point"
+                }
+            ]
+        },
+        {
+            "name": "old_approvals_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_name",
+                    "type": "name"
+                },
+                {
+                    "name": "requested_approvals",
+                    "type": "permission_level[]"
+                },
+                {
+                    "name": "provided_approvals",
+                    "type": "permission_level[]"
+                }
+            ]
+        },
+        {
             "name": "permission_level",
             "base": "",
             "fields": [
@@ -118,6 +186,24 @@
                 {
                     "name": "permission",
                     "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "proposal",
+            "base": "",
+            "fields": [
+                {
+                    "name": "proposal_name",
+                    "type": "name"
+                },
+                {
+                    "name": "packed_transaction",
+                    "type": "bytes"
+                },
+                {
+                    "name": "earliest_exec_time",
+                    "type": "eosio_msig_binary_extension_time_point?"
                 }
             ]
         },
@@ -192,6 +278,16 @@
             ]
         },
         {
+            "name": "type",
+            "base": "",
+            "fields": [
+                {
+                    "name": "__lx",
+                    "type": "[16]"
+                }
+            ]
+        },
+        {
             "name": "unapprove",
             "base": "",
             "fields": [
@@ -242,7 +338,36 @@
             "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Unapprove Proposed Transaction\nsummary: '{{nowrap level.actor}} revokes the approval previously provided to {{nowrap proposal_name}} proposal'\nicon: https://raw.githubusercontent.com/EOS-Nation/eosio.msig/master/contracts/icons/multisig.png#4fb41d3cf02d0dd2d35a29308e93c2d826ec770d6bb520db668f530764be7153\n---\n\n{{level.actor}} revokes the approval previously provided at their {{level.permission}} permission level from the {{proposal_name}} proposal proposed by {{proposer}}."
         }
     ],
-    "tables": [],
+    "tables": [
+        {
+            "name": "approvals",
+            "type": "old_approvals_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "approvals2",
+            "type": "approvals_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "invals",
+            "type": "invalidation",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "proposal",
+            "type": "proposal",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
     "ricardian_clauses": [],
     "variants": []
 }
