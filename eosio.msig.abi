@@ -203,7 +203,7 @@
                 },
                 {
                     "name": "earliest_exec_time",
-                    "type": "eosio_msig_binary_extension_time_point?"
+                    "type": "time_point?$"
                 }
             ]
         },
@@ -274,16 +274,6 @@
                 {
                     "name": "delay_sec",
                     "type": "varuint32"
-                }
-            ]
-        },
-        {
-            "name": "type",
-            "base": "",
-            "fields": [
-                {
-                    "name": "__lx",
-                    "type": "[16]"
                 }
             ]
         },
