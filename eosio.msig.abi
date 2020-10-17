@@ -331,33 +331,35 @@
   "tables": [
     {
       "name": "approvals",
-      "type": "old_approvals_info",
       "index_type": "i64",
       "key_names": [],
-      "key_types": []
+      "key_types": [],
+      "type": "old_approvals_info"
     },
     {
       "name": "approvals2",
-      "type": "approvals_info",
       "index_type": "i64",
       "key_names": [],
-      "key_types": []
+      "key_types": [],
+      "type": "approvals_info"
     },
     {
       "name": "invals",
-      "type": "invalidation",
       "index_type": "i64",
       "key_names": [],
-      "key_types": []
+      "key_types": [],
+      "type": "invalidation"
     },
     {
       "name": "proposal",
-      "type": "proposal",
       "index_type": "i64",
       "key_names": [],
-      "key_types": []
+      "key_types": [],
+      "type": "proposal"
     }
   ],
   "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": [],
   "variants": []
 }
